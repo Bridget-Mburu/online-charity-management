@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  background-color: #f8f9fa; /* Light background color */
 }
 
 /* Welcome Section */
@@ -11,7 +12,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 182, 193, 0.3); /* Light pink background */
   border-radius: 10px;
   padding: 40px;
 }
@@ -19,8 +20,8 @@
 .left-content {
   flex: 1.5; /* Increased flex for more text space */
   padding: 20px;
-  color: #f8f9fa;
-  background-color: rgba(0, 0, 0, 0.85); /* Increased opacity for better readability */
+  color: #fff;
+  background-color: rgba(255, 105, 180, 0.85); /* Soft pink background */
   border-radius: 10px;
   margin-right: 20px;
   display: flex;
@@ -39,7 +40,7 @@
 .find-donations-button,
 .support-charities-button {
   padding: 10px 20px;
-  background-color: #646cff;
+  background-color: #ff4081; /* Charity pink */
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -52,7 +53,7 @@
 
 .find-donations-button:hover,
 .support-charities-button:hover {
-  background-color: #535bf2;
+  background-color: #e60073; /* Darker pink for hover effect */
 }
 
 .image-content {
@@ -76,7 +77,7 @@
 .projects-section-header {
   text-align: center;
   margin-bottom: 20px;
-  color: #ffffff;
+  color: #333333;
 }
 
 .project-cards {
@@ -91,8 +92,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #333333;
-  color: #e0e0e0;
+  background-color: #fff5f8; /* Light pink background for cards */
+  color: #333;
 }
 
 /* Increase Impact Section */
@@ -101,13 +102,14 @@
   align-items: center;
   justify-content: space-between;
   padding: 40px 20px;
+  background-color: rgba(255, 105, 180, 0.15); /* Light pink background */
 }
 
 .increase-left {
   flex: 1.5; /* More space for text */
   padding-right: 20px;
   color: #f0f0f0;
-  background-color: rgba(0, 0, 0, 0.85); /* Background for readability */
+  background-color: rgba(255, 105, 180, 0.85); /* Pink background for readability */
   border-radius: 10px;
 }
 
@@ -149,7 +151,7 @@
   flex: 1.5;
   padding-left: 20px;
   color: #f0f0f0;
-  background-color: rgba(0, 0, 0, 0.85); /* Background for contrast */
+  background-color: rgba(255, 105, 180, 0.85); /* Pink background for contrast */
   border-radius: 8px;
 }
 
@@ -166,7 +168,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.25); /* Slightly darker background */
+  background-color: rgba(255, 105, 180, 0.25); /* Slightly pink background */
   border-radius: 10px;
   margin-top: 40px;
 }
@@ -175,7 +177,7 @@
   flex: 1.5;
   padding: 20px;
   color: #f0f0f0;
-  background-color: rgba(0, 0, 0, 0.85); /* Increased opacity */
+  background-color: rgba(255, 105, 180, 0.85); /* Increased opacity */
   border-radius: 10px;
 }
 
@@ -195,7 +197,7 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 40px;
-  background-color: rgba(0, 0, 0, 0.2); /* Slightly darker */
+  background-color: rgba(255, 105, 180, 0.2); /* Slightly lighter pink */
   border-radius: 10px;
   margin: 40px 0;
 }
@@ -204,7 +206,7 @@
   flex: 1.5;
   padding: 20px;
   color: #ffffff;
-  background-color: rgba(0, 0, 0, 0.85); /* Increased opacity */
+  background-color: rgba(255, 105, 180, 0.85); /* Soft pink background */
   border-radius: 10px;
 }
 
@@ -226,9 +228,9 @@
 
 /* Navigation Styles */
 .donation-management-nav {
-  background-color: #1f1f1f;
+  background-color: #f8f9fa;
   padding: 1rem;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #ddd;
 }
 
 .donation-management-nav ul {
@@ -240,7 +242,7 @@
 }
 
 .donation-management-nav a {
-  color: #646cff;
+  color: #ff4081; /* Charity pink */
   text-decoration: none;
   font-weight: 500;
 }
@@ -256,8 +258,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #333333;
-  color: #e0e0e0;
+  background-color: #fff5f8; /* Light pink background for projects */
+  color: #333;
   display: flex;
   flex-direction: column;
 }
@@ -275,7 +277,7 @@
 
 .time-left {
   font-size: 14px;
-  color: #646cff;
+  color: #ff4081; /* Charity pink */
 }
 
 .project-description {
@@ -305,7 +307,7 @@
 }
 
 .add-participant {
-  background-color: #646cff;
+  background-color: #ff4081; /* Charity pink */
   color: #fff;
   border: none;
   padding: 5px;
@@ -315,7 +317,7 @@
 }
 
 .add-participant:hover {
-  background-color: #535bf2;
+  background-color: #e60073; /* Darker pink for hover effect */
 }
 
 .days-left {

@@ -1,6 +1,7 @@
 import React from 'react';
 import Sidebar from '../components/Dashboard/Sidebar';
 import Home from '../components/Dashboard/Home';
+import "../styles/DashboardPage.css";
 
 function DashboardPage() {
   return (

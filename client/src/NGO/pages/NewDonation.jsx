@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
+import Swal from "sweetalert2";
+import "../styles/NewDonationForm.css"; 
 
 const NewDonationForm = () => {
   // State to track form inputs
@@ -33,8 +35,15 @@ const NewDonationForm = () => {
       date,
     });
 
-    // Set submission success message
-    setIsSubmitted(true);
+    // Set submission success message using SweetAlert
+    Swal.fire({
+      title: "Donation Submitted!",
+      text: "Your donation has been successfully recorded.",
+      icon: "success",
+      confirmButtonText: "OK",
+      confirmButtonColor: "#4caf50",
+      timer: 3000,
+    });
 
     // Reset form (optional)
     setCategory("");
@@ -44,19 +53,19 @@ const NewDonationForm = () => {
   };
 
   return (
-    <div style={styles.formContainer}>
-      <Navbar/>
-      <h2>New Donation</h2>
-      {isSubmitted && <p style={styles.successMessage}>Your donation has been submitted!</p>}
+    <div className="form-container">
+      <Navbar />
+      <h2 className="heading">New Donation</h2>
+      {isSubmitted && <p className="success-message">Your donation has been submitted!</p>}
       <form onSubmit={handleSubmit}>
-        <div style={styles.formGroup}>
-          <label htmlFor="category" style={styles.label}>Donation Category</label>
+        <div className="form-group">
+          <label htmlFor="category" className="label">Donation Category</label>
           <select
             id="category"
             value={category}
             onChange={handleCategoryChange}
             required
-            style={styles.input}
+            className="input"
           >
             <option value="">Select category</option>
             <option value="Food">Food</option>
@@ -66,20 +75,20 @@ const NewDonationForm = () => {
           </select>
         </div>
 
-        <div style={styles.formGroup}>
-          <label htmlFor="description" style={styles.label}>Description</label>
+        <div className="form-group">
+          <label htmlFor="description" className="label">Description</label>
           <textarea
             id="description"
             value={description}
             onChange={handleDescriptionChange}
             required
             placeholder="Enter a brief description of your donation"
-            style={styles.textarea}
+            className="textarea"
           ></textarea>
         </div>
 
-        <div style={styles.formGroup}>
-          <label htmlFor="amount" style={styles.label}>Amount</label>
+        <div className="form-group">
+          <label htmlFor="amount" className="label">Amount</label>
           <input
             type="number"
             id="amount"
@@ -87,76 +96,26 @@ const NewDonationForm = () => {
             onChange={handleAmountChange}
             required
             placeholder="Amount of donation"
-            style={styles.input}
+            className="input"
           />
         </div>
 
-        <div style={styles.formGroup}>
-          <label htmlFor="date" style={styles.label}>Donation Date</label>
+        <div className="form-group">
+          <label htmlFor="date" className="label">Donation Date</label>
           <input
             type="date"
             id="date"
             value={date}
             onChange={handleDateChange}
             required
-            style={styles.input}
+            className="input"
           />
         </div>
 
-        <button type="submit" style={styles.submitButton}>Submit Donation</button>
+        <button type="submit" className="submit-button">Submit Donation</button>
       </form>
     </div>
   );
-};
-
-// Inline styles object
-const styles = {
-  formContainer: {
-    maxWidth: "600px",
-    margin: "0 auto",
-    padding: "2rem",
-    backgroundColor: "#f4f4f9",
-    borderRadius: "8px",
-    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-  },
-  successMessage: {
-    color: "#28a745",
-    textAlign: "center",
-    marginBottom: "1rem",
-  },
-  formGroup: {
-    marginBottom: "1rem",
-  },
-  label: {
-    fontSize: "1.1rem",
-    fontWeight: "bold",
-    color: "#555",
-  },
-  input: {
-    width: "100%",
-    padding: "0.75rem",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-    fontSize: "1rem",
-  },
-  textarea: {
-    width: "100%",
-    padding: "0.75rem",
-    border: "1px solid #ccc",
-    borderRadius: "4px",
-    fontSize: "1rem",
-    resize: "vertical",
-    minHeight: "100px",
-  },
-  submitButton: {
-    backgroundColor: "#4caf50",
-    color: "white",
-    padding: "0.75rem 1.5rem",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "1.2rem",
-  },
 };
 
 export default NewDonationForm;

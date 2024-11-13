@@ -8,7 +8,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* Dark and light mode colors */
   --primary-color: #646cff;
   --primary-hover: #535bf2;
   --bg-dark: #242424;
@@ -30,7 +29,7 @@ body {
   justify-content: flex-start;
   min-width: 320px;
   min-height: 100vh;
-  padding-top: 80px; /* Added padding to account for fixed navbar */
+  padding-top: 80px; 
 }
 
 a {
@@ -44,7 +43,6 @@ a:hover {
   color: var(--primary-hover);
 }
 
-/* Navbar Styles */
 nav {
   position: fixed;
   top: 0;
@@ -80,7 +78,6 @@ nav ul li a:hover {
   color: var(--text-dark);
 }
 
-/* Headings */
 h1, h2, h3, h4, h5, h6 {
   color: white;
   margin: 0.5em 0;
@@ -90,7 +87,6 @@ h1 {
   font-size: 3em;
 }
 
-/* Button Styles */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -113,7 +109,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* Media Query for Light Mode */
 @media (prefers-color-scheme: light) {
   :root {
     color: var(--text-light);

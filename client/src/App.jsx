@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './Default/components/HomePage';
@@ -20,6 +21,37 @@ import Profile from './NGO/pages/Profile';
 import Logout from './NGO/pages/Logout';
 
 const App = () => {
+  const [role, setRole] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    setRole('admin')
+    setIsAuthenticated(true)
+  }, []);
+
+  const renderNavbar = () => {
+    if(isAuthenticated) {
+      switch (role) {
+        case 'admin':
+          return <AdminNavBar />;
+        default:
+          return <DefaultNavbar />
+      }
+    }
+  }
+    const [count, setCount] = useState(0);
+  const [donationRequests, setDonationRequests] = useState([]);
+
+  useEffect(() => {
+    const fetchedRequests = [
+      { id: 1, category: 'Food', description: 'Urgent need for food donations' },
+      { id: 2, category: 'Clothing', description: 'Clothing donations for refugees' },
+      { id: 3, category: 'Medical', description: 'Medical supplies urgently needed' },
+    ];
+    setDonationRequests(fetchedRequests);
+  }, []);
+  
+  
 
   return (
     <Router>
