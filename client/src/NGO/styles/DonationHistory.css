@@ -1,102 +1,109 @@
 /* src/NGO/styles/DonationHistory.css */
 
 .donation-history-container {
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    animation: fadeInUp 1s ease-out;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 1s ease-out;
+}
+
+/* Fade-in animation for the donation history container */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: #f7f9fc;
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  thead th {
-    background-color: #4a90e2;
-    color: #ffffff;
-    font-size: 1rem;
-    padding: 1rem;
-    text-align: left;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  
-  tbody tr {
-    transition: background-color 0.3s ease;
-  }
-  
-  tbody tr:nth-child(odd) {
-    background-color: #e9f3fc;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #ffffff;
-  }
-  
-  tbody tr:hover {
-    background-color: #d1e7f3;
-    cursor: pointer;
-    transform: scale(1.01);
-    transition: all 0.3s ease;
-  }
-  
-  td {
-    padding: 1rem;
-    font-size: 0.95rem;
-    color: #333;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  td:nth-child(3), /* Amount Donated */
-  td:nth-child(4), /* Currency */
-  td:nth-child(5) { /* Date */
-    text-align: center;
-  }
-  
-  td:first-child,
-  th:first-child {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-  }
-  
-  td:last-child,
-  th:last-child {
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-  }
-  
-  .message {
-    color: #28a745;
-    font-weight: bold;
-  }
-  
-  
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #005c5c; /* Charity-related color */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 1rem;
+}
+
+thead th {
+  background-color: #28a745; /* GlobalGiving-inspired green */
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f1f9f4; /* Light green background for odd rows */
+}
+
+tbody tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+tbody tr:hover {
+  background-color: #d1f7e1; /* Hover effect with light green */
+  cursor: pointer;
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #333;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+td:nth-child(3), /* Amount Donated */
+td:nth-child(4), /* Currency */
+td:nth-child(5), /* Date */
+td:nth-child(6), /* Payment Method */
+td:nth-child(7), /* Campaign Name */
+td:nth-child(8), /* Donation Type */
+td:nth-child(9) { /* Tax Receipt Sent */
+  text-align: center;
+}
+
+td:first-child,
+th:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+td:last-child,
+th:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.message {
+  color: #28a745; /* Green message color */
+  font-weight: bold;
+  font-size: 1rem;
+  margin-top: 1rem;
+}

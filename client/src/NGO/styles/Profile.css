@@ -1,160 +1,192 @@
-/* Main Profile Container */
+/* src/NGO/styles/Profile.css */
+
 .profile-container {
     max-width: 900px;
     margin: 2rem auto;
     padding: 2rem;
     background-color: #ffffff;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    animation: fadeIn 1s ease-in-out;
-}
-
-/* Heading */
-h2 {
-    font-size: 2rem;
-    color: #333;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-out;
+  }
+  
+  /* Fade-in animation for the profile container */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  h2 {
     text-align: center;
-    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    color: #005c5c; /* Charity-inspired color */
+    margin-bottom: 1rem;
     font-weight: 600;
-    animation: slideDown 0.8s ease-out;
-}
-
-/* Profile Summary */
-.profile-summary {
-    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  }
+  
+  h3 {
+    font-size: 1.6rem;
+    color: #28a745; /* Green, aligned with charity themes */
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Profile Summary Section */
+  .profile-summary {
+    margin-bottom: 2rem;
+    background-color: #f7f9fc; /* Light background for the summary */
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1.5rem;
-    animation: popIn 0.5s ease-in-out;
-}
-
-.profile-summary h3 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-bottom: 1rem;
-}
-
-/* Table Styles */
-table {
+  }
+  
+  .profile-summary p {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+  }
+  
+  .profile-summary strong {
+    color: #28a745;
+  }
+  
+  /* Donation History Table */
+  .donation-history {
+    margin-bottom: 2rem;
+  }
+  
+  .donation-history table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-table th, table td {
-    padding: 0.75rem;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    color: #333;
-    background-color: #f9f9f9;
-}
-
-table th {
-    background: #6a11cb;
-    color: #fff;
-}
-
-table tr:nth-child(even) td {
-    background-color: #eef;
-}
-
-/* Account Settings Form */
-.account-settings {
-    margin-top: 2rem;
-    padding: 1.5rem;
-    background-color: #f4f4f4;
+    background-color: #f7f9fc;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    animation: popIn 0.5s ease-in-out;
-}
-
-.account-settings h3 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-bottom: 1rem;
-}
-
-.account-settings label {
-    font-weight: 500;
-    color: #666;
-    display: block;
-    margin-top: 1rem;
-}
-
-.account-settings input {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #f9f9f9;
-    transition: box-shadow 0.3s ease;
-}
-
-.account-settings input:focus {
-    outline: none;
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
-}
-
-/* Donation Preferences */
-.donation-preferences {
-    background: #e6eaf0;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    border-radius: 8px;
-    animation: slideUp 0.6s ease-in-out;
-}
-
-.donation-preferences h3 {
-    font-size: 1.5rem;
-    color: #444;
-    margin-bottom: 1rem;
-}
-
-.donation-preferences p {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Button Styling */
-button {
-    display: inline-block;
-    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    overflow: hidden;
+  }
+  
+  .donation-history thead th {
+    background-color: #28a745; /* Charity green */
     color: #ffffff;
-    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  
+  .donation-history tbody tr:nth-child(odd) {
+    background-color: #f1f9f4;
+  }
+  
+  .donation-history tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .donation-history tbody tr:hover {
+    background-color: #d1f7e1;
+    cursor: pointer;
+    transform: scale(1.01);
+    transition: all 0.3s ease;
+  }
+  
+  .donation-history td {
+    padding: 1rem;
+    font-size: 0.95rem;
+    color: #333;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .donation-history td:nth-child(3),
+  .donation-history td:nth-child(4),
+  .donation-history td:nth-child(5),
+  .donation-history td:nth-child(6) {
+    text-align: center;
+  }
+  
+  .donation-history td:first-child,
+  .donation-history th:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+  }
+  
+  .donation-history td:last-child,
+  .donation-history th:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  /* Account Settings Form */
+  .account-settings {
+    margin-bottom: 2rem;
+    background-color: #f7f9fc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account-settings form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .account-settings label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .account-settings input {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .account-settings input[type="email"],
+  .account-settings input[type="tel"],
+  .account-settings input[type="password"] {
+    max-width: 400px;
+  }
+  
+  .account-settings button {
+    background-color: #28a745; /* Charity green */
+    color: white;
+    padding: 1rem;
+    font-size: 1rem;
     border: none;
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .account-settings button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+  
+  /* Donation Preferences Section */
+  .donation-preferences {
+    margin-bottom: 2rem;
+    background-color: #f7f9fc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .donation-preferences p {
     font-size: 1rem;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes popIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
-
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+    color: #333;
+  }
+  
+  .donation-preferences strong {
+    color: #28a745;
+  }
+  
