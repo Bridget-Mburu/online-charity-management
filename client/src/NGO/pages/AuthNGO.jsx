@@ -1,4 +1,4 @@
-// import React, { useState } from 'react';
+import React from 'react';
 import Swal from "sweetalert2";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import "../styles/Auth.css"; // Ensure your CSS file is imported
@@ -8,40 +8,41 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 
+// Sample theme array (if needed)
 const themes = [
   // Same theme array...
 ];
 
+// Helper function to set theme dynamically
 const setTheme = (theme) => {
   const root = document.querySelector(":root");
   root.style.setProperty("--background", theme.background);
   root.style.setProperty("--color", theme.color);
   root.style.setProperty("--primary-color", theme.primaryColor);
-  root.style.setProperty(
-    "--glass-color",
-    theme.glassColor || "rgba(255, 255, 255, 0.2)"
-  );
+  root.style.setProperty("--glass-color", theme.glassColor || "rgba(255, 255, 255, 0.2)");
 };
 
 const AuthNGO = () => {
-
   const navigate = useNavigate();
 
+  // Formik setup with validation schema using Yup
   const formik = useFormik({
     validationSchema: Yup.object().shape({
-      role: Yup.string().required("Please input your role"),
+      role: Yup.string().required("Please select your role"),
       organization_name: Yup.string().required("Organization name is required"),
       organization_description: Yup.string().required("Description is required"),
-      email: Yup.string().required("Email is required"),
-      password: Yup.string().required("Password is required"),
-      confirm_password: Yup.string().required("Role is required"),
+      email: Yup.string().email("Invalid email address").required("Email is required"),
+      password: Yup.string().min(6, "Password must be at least 6 characters").required("Password is required"),
+      confirm_password: Yup.string()
+        .oneOf([Yup.ref('password'), null], "Passwords must match")
+        .required("Confirmation password is required"),
       organization_address: Yup.string().required("Address is required"),
       first_name: Yup.string().required("First name is required"),
       last_name: Yup.string().required("Last name is required"),
-      phone: Yup.string().required("Phone is required"),
+      phone: Yup.string().required("Phone number is required"),
     }),
     initialValues: {
-      role:"",
+      role: "",
       organization_name: "",
       organization_description: "",
       email: "",
@@ -53,7 +54,7 @@ const AuthNGO = () => {
       phone: "",
     },
     onSubmit: async (values) => {
-      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/users`,{
+      const res = await fetch(`${import.meta.env.VITE_SERVER_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +73,7 @@ const AuthNGO = () => {
         }),
       });
       const data = await res.json();
-      console.log(data)
+      console.log(data);
 
       if (data?.access_token) {
         toast.success(data.message);
@@ -84,9 +85,9 @@ const AuthNGO = () => {
     },
   });
 
+  // Handle role selection and redirection
   const handleRole = (event) => {
     const selectedRole = event.target.value;
-
     formik.setFieldValue("role", selectedRole);
 
     if (selectedRole === "donor") {
@@ -94,120 +95,122 @@ const AuthNGO = () => {
     }
   };
 
-  
-
-
   return (
     <div className="auth-container">
       <DefaultDashboard />
 
       <div className="card-3d-wrap mx-auto">
         <div className="card-3d-wrapper">
-          {/* Register Card */}
-          <div >
+          <div>
             <div className="center-wrap">
               <h4>Register</h4>
               <form onSubmit={formik.handleSubmit}>
 
-
-                <select>
-                  type="text"
+                {/* Role Selection */}
+                <select
                   name="role"
                   value={formik.values.role}
-                  onChange={formik.handleChange}
-                  helpertext={formik.errors.first_name}
-                  color={formik.errors.role ? "failure" : undefined}
-                  
+                  onChange={(e) => handleRole(e)}
+                  onBlur={formik.handleBlur}
+                >
                   <option value="" disabled>Select Role</option>
                   <option value="ngo">NGO</option>
                   <option value="donor">Donor</option>
                 </select>
+                {formik.touched.role && formik.errors.role && <div className="error">{formik.errors.role}</div>}
 
+                {/* Organization Name */}
                 <input
                   type="text"
                   name="organization_name"
                   placeholder="Organization Name"
                   value={formik.values.organization_name}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.organization_name}
-                  color={
-                    formik.errors.organization_name ? "failure" : undefined
-                  }
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.organization_name && formik.errors.organization_name && <div className="error">{formik.errors.organization_name}</div>}
+
+                {/* Email */}
                 <input
                   type="email"
                   name="email"
                   placeholder="Email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.email}
-                  color={formik.errors.email ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.email && formik.errors.email && <div className="error">{formik.errors.email}</div>}
 
+                {/* Password */}
                 <input
                   type="password"
                   name="password"
                   placeholder="Password"
                   value={formik.values.password}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.password}
-                  color={formik.errors.password ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.password && formik.errors.password && <div className="error">{formik.errors.password}</div>}
 
+                {/* Confirm Password */}
                 <input
                   type="password"
                   name="confirm_password"
-                  placeholder="confirmation Password"
+                  placeholder="Confirm Password"
                   value={formik.values.confirm_password}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.confirm_password}
-                  color={formik.errors.confirm_password ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.confirm_password && formik.errors.confirm_password && <div className="error">{formik.errors.confirm_password}</div>}
 
+                {/* Organization Address */}
                 <input
                   type="text"
                   name="organization_address"
                   placeholder="Organization Address"
                   value={formik.values.organization_address}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.organization_address}
-                  color={
-                    formik.errors.organization_address ? "failure" : undefined
-                  }
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.organization_address && formik.errors.organization_address && <div className="error">{formik.errors.organization_address}</div>}
 
+                {/* First Name */}
                 <input
                   type="text"
                   name="first_name"
                   placeholder="Contact Person First Name"
                   value={formik.values.first_name}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.first_name}
-                  color={formik.errors.first_name ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.first_name && formik.errors.first_name && <div className="error">{formik.errors.first_name}</div>}
 
+                {/* Last Name */}
                 <input
                   type="text"
                   name="last_name"
                   placeholder="Contact Person Last Name"
                   value={formik.values.last_name}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.last_name}
-                  color={formik.errors.last_name ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.last_name && formik.errors.last_name && <div className="error">{formik.errors.last_name}</div>}
 
+                {/* Phone Number */}
                 <input
                   type="tel"
                   name="phone"
                   placeholder="Phone"
                   value={formik.values.phone}
                   onChange={formik.handleChange}
-                  helpertext={formik.errors.phone}
-                  color={formik.errors.phone ? "failure" : undefined}
+                  onBlur={formik.handleBlur}
                 />
+                {formik.touched.phone && formik.errors.phone && <div className="error">{formik.errors.phone}</div>}
 
+                {/* Submit Button */}
                 <button type="submit">Register</button>
               </form>
+
               <p>
                 Already have an account? <Link to="/login">Log In</Link>
               </p>

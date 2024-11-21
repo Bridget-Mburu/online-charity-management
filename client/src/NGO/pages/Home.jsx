@@ -1,143 +1,120 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Navbar from "../components/Navbar";
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthNGO'; // You can keep this if you need authentication
 
 const Home = () => {
-  const [requests, setRequests] = useState([]);
-  const [statusMessage, setStatusMessage] = useState("");
-
-  const containerStyle = {
-    backgroundColor: "#f8f8f8", // Light background
-    fontFamily: "Arial, sans-serif", // Font family
-    height: "100vh", // Full viewport height
-    display: "flex", // Flexbox layout
-    flexDirection: "column", // Stack content vertically
-    justifyContent: "flex-start", // Align content to the top
-    width: "100%", // Full width
-    maxWidth: "900px", // Prevent too wide container
-    margin: "0 auto", // Center the container horizontally
-    padding: "100px", // Padding for spacing
-  };
-
-  const buttonStyle = {
-    border: "1px solid transparent",
-    padding: "10px 15px",
-    borderRadius: "5px",
-    fontSize: "16px",
-    margin: "10px 0",
-    cursor: "pointer",
-    width: "80%",
-    maxWidth: "300px",
-  };
-
-  const pendingStyle = {
-    ...buttonStyle,
-    backgroundColor: "transparent",
-    border: "1px solid black",
-    color: "black",
-  };
-
-  const approvedStyle = {
-    ...buttonStyle,
-    backgroundColor: "transparent",
-    border: "1px solid lightgreen",
-    color: "lightgreen",
-  };
-
-  const rejectedStyle = {
-    ...buttonStyle,
-    backgroundColor: "transparent",
-    border: "1px solid red",
-    color: "red",
-  };
-
-  const createRequestStyle = {
-    ...buttonStyle,
-    background: "linear-gradient(to right, purple, indigo)",
-    color: "white",
-    marginTop: "20px",
-  };
-
-  const headerStyle = {
-    fontSize: "20px",
-    fontWeight: "bold",
-    color: "#fff",
-    background: "linear-gradient(to right, purple, indigo)",
-    padding: "8px 20px",
-    borderRadius: "5px",
-    marginBottom: "20px",
-    width: "100%",
-  };
-
-  // Fetch requests when the component mounts
+  const { user, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  
+  const [donationRequests, setDonationRequests] = useState([]);
+  const [donationHistory, setDonationHistory] = useState([]);
+  const [formData, setFormData] = useState({
+    category: '',
+    reason: '',
+    amount: '',
+  });
+  
+  // Fetch donation requests and history if authenticated
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/requests") // Replace with your backend URL
-      .then((response) => {
-        setRequests(response.data); // Set the data from the backend
-      })
-      .catch((error) => {
-        console.error("There was an error fetching requests:", error);
-        setStatusMessage("Error fetching data. Please try again later.");
-      });
-  }, []);
+    if (isAuthenticated) {
+      // Placeholder for your API calls
+      // You can later reintroduce the actual API functions here
+      setDonationRequests([]); // Just an example, replace with real data fetching
+      setDonationHistory([]);  // Placeholder for donation history
+    } else {
+      navigate('/login');
+    }
+  }, [isAuthenticated, navigate]);
 
-  // Create a new request
-  const handleCreateRequest = () => {
-    const newRequest = {
-      category: "Food", // Example category (you can update this to be dynamic)
-      amount: 100, // Example amount (you can update this as well)
-    };
+  // Handle form submission for creating donation request (this is just a placeholder for now)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const { category, reason, amount } = formData;
+    if (!category || !reason || !amount) {
+      alert('All fields are required');
+      return;
+    }
+    alert('Donation Request submitted (this is just a placeholder)');
+    setFormData({
+      category: '',
+      reason: '',
+      amount: '',
+    });
+  };
 
-    axios
-      .post("http://localhost:5000/api/requests", newRequest) // Replace with your backend URL
-      .then((response) => {
-        setRequests([...requests, response.data]); // Add the new request to the list
-        setStatusMessage("Request created successfully!");
-      })
-      .catch((error) => {
-        console.error("There was an error creating the request:", error);
-        setStatusMessage("Error creating the request. Please try again later.");
-      });
+  // Handle input change in the form
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
   return (
-    <div style={containerStyle}>
-      <Navbar />
-      <h2 style={headerStyle}>My Requests</h2>
-
-      {/* Display status message */}
-      {statusMessage && <p>{statusMessage}</p>}
-
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          width: "100%",
-        }}
-      >
-        {requests.map((request) => (
-          <button
-            key={request.id}
-            style={
-              request.status === "pending"
-                ? pendingStyle
-                : request.status === "approved"
-                ? approvedStyle
-                : rejectedStyle
-            }
-          >
-            {request.status.charAt(0).toUpperCase() + request.status.slice(1)}{" "}
-            Request - {request.category} - ${request.amount}
-          </button>
-        ))}
+    <div className="home-container">
+      <h1>Welcome to the NGO Dashboard</h1>
+      
+      {/* Donation Request Form */}
+      <div className="donation-request-form">
+        <h2>Create Donation Request</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="category"
+            placeholder="Donation Category"
+            value={formData.category}
+            onChange={handleChange}
+          />
+          <input
+            type="text"
+            name="reason"
+            placeholder="Reason for Request"
+            value={formData.reason}
+            onChange={handleChange}
+          />
+          <input
+            type="number"
+            name="amount"
+            placeholder="Amount Needed"
+            value={formData.amount}
+            onChange={handleChange}
+          />
+          <button type="submit">Submit Request</button>
+        </form>
       </div>
 
-      {/* Create Request Donation button */}
-      <button style={createRequestStyle} onClick={handleCreateRequest}>
-        Create Request Donation
-      </button>
+      {/* Donation Requests List */}
+      <div className="donation-requests-list">
+        <h2>Your Donation Requests</h2>
+        {donationRequests.length > 0 ? (
+          donationRequests.map((request, index) => (
+            <div key={index} className="donation-request-item">
+              <p>Request {index + 1}: {request}</p> {/* Replace with actual data */}
+            </div>
+          ))
+        ) : (
+          <p>You have no donation requests.</p>
+        )}
+      </div>
+
+      {/* Donation History */}
+      <div className="donation-history">
+        <h2>Your Donation History</h2>
+        {donationHistory.length > 0 ? (
+          <div>
+            {donationHistory.map((donation, index) => (
+              <div key={index} className="donation-item">
+                <p><strong>Donor:</strong> {donation.donorName}</p>
+                <p><strong>Amount Donated:</strong> {donation.amount}</p>
+                <p><strong>Date:</strong> {new Date(donation.date).toLocaleDateString()}</p>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <p>No donations yet.</p>
+        )}
+      </div>
     </div>
   );
 };
