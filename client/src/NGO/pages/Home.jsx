@@ -1,5 +1,5 @@
 import React from "react";
-// import "../styles/home.css";
+import "../../Donor/styles/home.css"
 import Navbar from "../components/Navbar";
 import Footer from "../../Donor/components/Footer";
 import { Link } from "react-router-dom";
@@ -46,8 +46,10 @@ const Home = () => {
             local communities.
           </li>
         </ul>
-        <div>
-          <h3>You can make a donation request here:</h3>
+        <div style={{ co: "center" }}>
+          <h3 style={{ color: "maroon" }}>
+            You can make a donation request here:
+          </h3>
           <Link to="/new-donation" className="support-charities-button">
             Make a donation request
           </Link>

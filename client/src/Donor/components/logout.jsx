@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutUser } from "../utils/authAction";
 import toast from "react-hot-toast";
+import "../styles/logout.css"
 
 const Logout = () => {
   const dispatch = useDispatch();
