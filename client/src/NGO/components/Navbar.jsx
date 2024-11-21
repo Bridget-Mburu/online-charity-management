@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaHome, FaDonate, FaHistory, FaUserAlt, FaSignOutAlt } from "react-icons/fa"; // Import relevant icons
 import Logout from "../../Donor/components/logout";
 
 const Navbar = () => {
@@ -27,9 +28,12 @@ const Navbar = () => {
               color: "black",
               textDecoration: "none",
               fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            Home
+            <FaHome /> Home
           </Link>
         </li>
         <li>
@@ -39,9 +43,12 @@ const Navbar = () => {
               color: "black",
               textDecoration: "none",
               fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            New donations
+            <FaDonate /> New donations
           </Link>
         </li>
         <li>
@@ -51,9 +58,12 @@ const Navbar = () => {
               color: "black",
               textDecoration: "none",
               fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            Donation History
+            <FaHistory /> Donation History
           </Link>
         </li>
         <li>
@@ -63,9 +73,12 @@ const Navbar = () => {
               color: "black",
               textDecoration: "none",
               fontWeight: "bold",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
             }}
           >
-            Profile
+            <FaUserAlt /> Profile
           </Link>
         </li>
         <li
@@ -73,9 +86,12 @@ const Navbar = () => {
             color: "black",
             textDecoration: "none",
             fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
           }}
         >
-          <Logout />
+          <Logout /> <FaSignOutAlt /> Log Out
         </li>
       </ul>
     </nav>
