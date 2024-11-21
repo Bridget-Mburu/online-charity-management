@@ -1,120 +1,66 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthNGO'; // You can keep this if you need authentication
+import React from "react";
+import "../../Donor/styles/home.css"
+import Navbar from "../components/Navbar";
+import Footer from "../../Donor/components/Footer";
+import { Link } from "react-router-dom";
+
 
 const Home = () => {
-  const { user, isAuthenticated } = useAuth();
-  const navigate = useNavigate();
-  
-  const [donationRequests, setDonationRequests] = useState([]);
-  const [donationHistory, setDonationHistory] = useState([]);
-  const [formData, setFormData] = useState({
-    category: '',
-    reason: '',
-    amount: '',
-  });
-  
-  // Fetch donation requests and history if authenticated
-  useEffect(() => {
-    if (isAuthenticated) {
-      // Placeholder for your API calls
-      // You can later reintroduce the actual API functions here
-      setDonationRequests([]); // Just an example, replace with real data fetching
-      setDonationHistory([]);  // Placeholder for donation history
-    } else {
-      navigate('/login');
-    }
-  }, [isAuthenticated, navigate]);
-
-  // Handle form submission for creating donation request (this is just a placeholder for now)
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const { category, reason, amount } = formData;
-    if (!category || !reason || !amount) {
-      alert('All fields are required');
-      return;
-    }
-    alert('Donation Request submitted (this is just a placeholder)');
-    setFormData({
-      category: '',
-      reason: '',
-      amount: '',
-    });
-  };
-
-  // Handle input change in the form
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
   return (
-    <div className="home-container">
-      <h1>Welcome to the NGO Dashboard</h1>
-      
-      {/* Donation Request Form */}
-      <div className="donation-request-form">
-        <h2>Create Donation Request</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="category"
-            placeholder="Donation Category"
-            value={formData.category}
-            onChange={handleChange}
-          />
-          <input
-            type="text"
-            name="reason"
-            placeholder="Reason for Request"
-            value={formData.reason}
-            onChange={handleChange}
-          />
-          <input
-            type="number"
-            name="amount"
-            placeholder="Amount Needed"
-            value={formData.amount}
-            onChange={handleChange}
-          />
-          <button type="submit">Submit Request</button>
-        </form>
-      </div>
+    <div className="home">
+      <Navbar />
 
-      {/* Donation Requests List */}
-      <div className="donation-requests-list">
-        <h2>Your Donation Requests</h2>
-        {donationRequests.length > 0 ? (
-          donationRequests.map((request, index) => (
-            <div key={index} className="donation-request-item">
-              <p>Request {index + 1}: {request}</p> {/* Replace with actual data */}
-            </div>
-          ))
-        ) : (
-          <p>You have no donation requests.</p>
-        )}
-      </div>
+      {/* Introduction Section */}
+      <section className="intro">
+        <h1>Welcome to Our Charity Organization</h1>
+        <p>
+          We are committed to supporting various causes that help improve the
+          lives of individuals in need. Join us in making the world a better
+          place by supporting our partner NGOs.
+        </p>
+      </section>
 
-      {/* Donation History */}
-      <div className="donation-history">
-        <h2>Your Donation History</h2>
-        {donationHistory.length > 0 ? (
-          <div>
-            {donationHistory.map((donation, index) => (
-              <div key={index} className="donation-item">
-                <p><strong>Donor:</strong> {donation.donorName}</p>
-                <p><strong>Amount Donated:</strong> {donation.amount}</p>
-                <p><strong>Date:</strong> {new Date(donation.date).toLocaleDateString()}</p>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p>No donations yet.</p>
-        )}
-      </div>
+      {/* What We've Done and How We've Helped */}
+      <section className="impact">
+        <h2>Our Impact</h2>
+        <p>
+          Over the years, our organization has worked tirelessly to create
+          positive change in the communities we serve. Through partnerships with
+          various NGOs, we have been able to provide essential resources,
+          support, and financial aid to those in need.
+        </p>
+        <p>
+          <strong>Here's how we've helped:</strong>
+        </p>
+        <ul>
+          <li>Provided over $1 million in financial aid to NGOs in need.</li>
+          <li>
+            Supported over 200 community projects across multiple regions.
+          </li>
+          <li>
+            Delivered food, medical supplies, and education materials to
+            thousands of families.
+          </li>
+          <li>
+            Enabled sustainable development initiatives that continue to benefit
+            local communities.
+          </li>
+        </ul>
+        <div style={{ co: "center" }}>
+          <h3 style={{ color: "maroon" }}>
+            You can make a donation request here:
+          </h3>
+          <Link to="/new-donation" className="support-charities-button">
+            Make a donation request
+          </Link>
+        </div>
+        <p>
+          We are proud of the difference we've made, but there is still much
+          more to do. With your support, we can continue to improve lives and
+          bring hope to those in need.
+        </p>
+        <Footer />
+      </section>
     </div>
   );
 };

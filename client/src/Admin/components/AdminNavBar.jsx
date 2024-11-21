@@ -3,7 +3,12 @@ import '../styles/sidebar.css';
 
 const AdminNavBar = () => {
     return (
-        <nav className="sidebar">
+        <div className="sidebar">
+            
+            <div className="banner">
+                Admin Dashboard
+            </div>
+
             <ul>
                 <li>
                     <Link to="/admin">
@@ -16,7 +21,7 @@ const AdminNavBar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link to="/request">
+                    <Link to="/admin-requests">
                         <span className="material-symbols-outlined icon_left">volunteer_activism</span>Donation Request
                     </Link>
                 </li>
@@ -30,9 +35,8 @@ const AdminNavBar = () => {
                         <span className="material-symbols-outlined icon_left">corporate_fare</span>Organization Management
                     </Link>
                 </li>
-                
             </ul>
-        </nav>
+        </div>
     );
 };
 

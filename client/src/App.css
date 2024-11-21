@@ -41,15 +41,21 @@ canvas {
   font-family: Arial, sans-serif;
 }
 
+input{
+  background-color: white;
+  color: black;
+}
 nav ul {
   display: flex;
   flex-direction: row; /* Horizontal by default */
   align-items: center;/* Align links to the left */
   padding: 0;
-  margin-top: 30px;
+  margin-bottom: 0px;
+  background-color: white;
+  height: 100px;
 }
 
-nav li {
+.nav li {
   margin: 0 20px;
 }
 
@@ -75,7 +81,7 @@ nav a {
   
 }
 }
-nav a:hover {
+.nav a:hover {
   background-color: rgba(255, 255, 255, 0.2);
 }
 

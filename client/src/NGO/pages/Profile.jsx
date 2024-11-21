@@ -31,9 +31,4 @@ const NGOProfile = () => {
         </div>
       ) : (
         <p>Loading...</p>
-      )}
-    </div>
-  );
-};
 
-export default NGOProfile;
