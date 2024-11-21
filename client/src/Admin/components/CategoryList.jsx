@@ -37,7 +37,6 @@ const CategoriesList = () => {
   return (
     <div>
     
-    <h2 className="category-Title">Categories</h2> 
     
     <div className="category-div">
       {categories.length > 0 ? (
