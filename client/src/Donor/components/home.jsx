@@ -3,7 +3,6 @@ import "../styles/home.css";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
-
 import NavBar from "./NavBar";
 
 const Home = () => {
@@ -12,8 +11,6 @@ const Home = () => {
       <NavBar />
       {/* Introduction Section */}
       <section className="intro">
-        <h1>Welcome to Our Charity Organization</h1>
-
         <h1>Welcome to Our Charity Organization</h1>
 
         <p>
@@ -50,10 +47,12 @@ const Home = () => {
           </li>
         </ul>
         <div>
-          <h3>You can donate here:</h3>
-          <Link to="/requests" className="support-charities-button">
-            Donate
-          </Link>
+          <div style={{textAlign: "center"}}>
+            <h3>You can donate here:</h3>
+            <Link to="/requests" className="support-charities-button">
+              Donate
+            </Link>
+          </div>
         </div>
         <p>
           We are proud of the difference we've made, but there is still much

@@ -72,7 +72,7 @@
   margin: 10px 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  color: white;
+  color: black;
 }
 
 #email-input:focus, #password-input:focus, #submit-btn:focus {
@@ -92,7 +92,7 @@
 }
 
 #submit-btn:hover {
-  background-color: #45a049;
+  background-color: #082c4e;
 }
 
 #signup-link {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar"
+import "../styles/category.css"
 
 const CategoriesList = () => {
   const [categories, setCategories] = useState([]);
