@@ -26,7 +26,7 @@
 
 /* Individual link styles */
 .nav-link {
-  /* color: #ffffff; White text color */
+  color: #772222; 
   text-decoration: none; /* Remove underline */
   font-size: 16px; /* Font size for links */
   padding: 8px 12px; /* Padding for links */

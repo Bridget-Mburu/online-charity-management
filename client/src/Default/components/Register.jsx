@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import React from "react";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import "../styles/Register.css";
 import DefaultDashboard from "../../Default/components/DefaultDashboard";
@@ -173,7 +174,12 @@ const Auth = () => {
                   helpertext={formik.errors.confirm_password}
                   color={formik.errors.confirm_password ? "failure" : undefined}
                 />
-                <button type="submit">Register</button>
+                <button type="submit" 
+                style={{background: "maroon",
+                  width: "500px"
+                }}
+                
+                >Register</button>
               </form>
               <p>
                 Already have an account? <Link to="/login">Log In</Link>

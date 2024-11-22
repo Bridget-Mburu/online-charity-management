@@ -66,7 +66,7 @@ const FindDonations = () => {
   return (
     <div className="home">
       <DefaultDashboard />
-      <h2> Donation Requests</h2>
+      <h2 style={{ color: "#772222" }}> Donation Requests</h2>
       {error && <p className="text-danger">{error}</p>}{" "}
       {/* Display error messages */}
       <table className="table table-striped table-hover">
@@ -75,6 +75,7 @@ const FindDonations = () => {
             <th>Title</th>
             <th>Description</th>
             <th>Target Amount</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>

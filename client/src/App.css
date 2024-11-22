@@ -86,7 +86,7 @@ nav a {
 }
 
 .statistics button {
-  background-color: #4caf50;
+  background-color: style=#772222;
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -98,3 +98,5 @@ nav a {
 .read-the-docs {
   color: #898989;
 }
+
+

@@ -33,11 +33,13 @@ const DonationHistory = () => {
   }, []);
   return (
     <div>
-      <div>
+      <div style={{
+        padding: "100px"
+      }}>
         <Navbar />
-        <h2>Donation History</h2>
-        <p>Here are the donation records.</p>
-        <table border="1" cellPadding="10" cellSpacing="0">
+        <h2 style={{color: "maroon"}}>Donation History</h2>
+        <p style={{color: "grey"}}>Here are the donation records.</p>
+        <table style={{alignItems: "center"}} border="1" cellPadding="10" cellSpacing="0">
           <thead>
             <tr>
               <th>Title</th>

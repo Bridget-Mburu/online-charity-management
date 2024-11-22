@@ -105,7 +105,6 @@ const AuthNGO = () => {
             <div className="center-wrap">
               <h4>Register</h4>
               <form onSubmit={formik.handleSubmit}>
-
                 {/* Role Selection */}
                 <select
                   name="role"
@@ -113,11 +112,15 @@ const AuthNGO = () => {
                   onChange={(e) => handleRole(e)}
                   onBlur={formik.handleBlur}
                 >
-                  <option value="" disabled>Select Role</option>
+                  <option value="" disabled>
+                    Select Role
+                  </option>
                   <option value="ngo">NGO</option>
                   <option value="donor">Donor</option>
                 </select>
-                {formik.touched.role && formik.errors.role && <div className="error">{formik.errors.role}</div>}
+                {formik.touched.role && formik.errors.role && (
+                  <div className="error">{formik.errors.role}</div>
+                )}
 
                 {/* Organization Name */}
                 <input
@@ -128,7 +131,12 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.organization_name && formik.errors.organization_name && <div className="error">{formik.errors.organization_name}</div>}
+                {formik.touched.organization_name &&
+                  formik.errors.organization_name && (
+                    <div className="error">
+                      {formik.errors.organization_name}
+                    </div>
+                  )}
 
                 {/* Email */}
                 <input
@@ -139,7 +147,9 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.email && formik.errors.email && <div className="error">{formik.errors.email}</div>}
+                {formik.touched.email && formik.errors.email && (
+                  <div className="error">{formik.errors.email}</div>
+                )}
 
                 {/* Password */}
                 <input
@@ -150,7 +160,9 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.password && formik.errors.password && <div className="error">{formik.errors.password}</div>}
+                {formik.touched.password && formik.errors.password && (
+                  <div className="error">{formik.errors.password}</div>
+                )}
 
                 {/* Confirm Password */}
                 <input
@@ -161,7 +173,12 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.confirm_password && formik.errors.confirm_password && <div className="error">{formik.errors.confirm_password}</div>}
+                {formik.touched.confirm_password &&
+                  formik.errors.confirm_password && (
+                    <div className="error">
+                      {formik.errors.confirm_password}
+                    </div>
+                  )}
 
                 {/* Organization Address */}
                 <input
@@ -172,7 +189,12 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.organization_address && formik.errors.organization_address && <div className="error">{formik.errors.organization_address}</div>}
+                {formik.touched.organization_address &&
+                  formik.errors.organization_address && (
+                    <div className="error">
+                      {formik.errors.organization_address}
+                    </div>
+                  )}
 
                 {/* First Name */}
                 <input
@@ -183,7 +205,9 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.first_name && formik.errors.first_name && <div className="error">{formik.errors.first_name}</div>}
+                {formik.touched.first_name && formik.errors.first_name && (
+                  <div className="error">{formik.errors.first_name}</div>
+                )}
 
                 {/* Last Name */}
                 <input
@@ -194,7 +218,9 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.last_name && formik.errors.last_name && <div className="error">{formik.errors.last_name}</div>}
+                {formik.touched.last_name && formik.errors.last_name && (
+                  <div className="error">{formik.errors.last_name}</div>
+                )}
 
                 {/* Phone Number */}
                 <input
@@ -205,10 +231,17 @@ const AuthNGO = () => {
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                 />
-                {formik.touched.phone && formik.errors.phone && <div className="error">{formik.errors.phone}</div>}
+                {formik.touched.phone && formik.errors.phone && (
+                  <div className="error">{formik.errors.phone}</div>
+                )}
 
                 {/* Submit Button */}
-                <button type="submit">Register</button>
+                <button
+                  type="submit"
+                  style={{ background: "maroon", width: "500px" }}
+                >
+                  Register
+                </button>
               </form>
 
               <p>
