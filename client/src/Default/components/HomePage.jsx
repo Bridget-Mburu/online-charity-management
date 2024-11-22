@@ -55,7 +55,7 @@ const HomePage = () => {
       <section className="welcome-section">
         <div className="left-content">
           <h1>Welcome to Our Donation Platform</h1>
-          <p>
+          <p style={{ color: "white" }}>
             Join us in making a difference! We support various charitable causes
             and help fund projects for those in need. You can donate,
             participate, or simply spread the word.

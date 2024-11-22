@@ -5,14 +5,16 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        <h2>Contact Us</h2>
+        <h2 style={{ color: "white" }}>Contact Us</h2>
         <div className="contact-details">
-          <p>
-            <strong>Phone:</strong> +123 456 7890
+          <p style={{ color: "white" }}>
+            <strong style={{ color: "white" }}>Phone:</strong> +123 456 7890
           </p>
           <p>
-            <strong>Email:</strong>{" "}
-            <a href="mailto:Donation@charity.com">contact@example.com</a>
+            <strong style={{ color: "white" }}>Email:</strong>{" "}
+            <a href="mailto:Donation@charity.com" style={{ color: "white" }}>
+              contact@example.com
+            </a>
           </p>
         </div>
         <div className="social-media">

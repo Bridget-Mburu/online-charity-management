@@ -7,8 +7,8 @@
   text-align: center; 
   padding: 1em 0; 
   margin-bottom: 1em; 
-  border-bottom: 3px solid #ff5722; 
-  border-top: 3px solid #ff5722;
+  border-bottom: 3px solid #082c4e; 
+  border-top: 3px solid #082c4e;
 }
 
 
@@ -55,13 +55,13 @@
 
 
 .sidebar ul li a:hover {
-  background-color: #ff5722; 
+  background-color: #082c4e; 
   color: #fff;
 }
 
 
 .sidebar ul li a.active {
-  background-color: #ff3d00; 
+  background-color: #082c4e; 
   color: #fff;
 }
 

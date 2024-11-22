@@ -15,10 +15,12 @@ const Logout = () => {
 
   return (
     <div className="page logout-page">
-      <Navbar/>
+      <Navbar />
       <h2>Logout</h2>
       <p>Are you sure you want to log out?</p>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout} style={{ backgroundColor: "maroon" }}>
+        Logout
+      </button>
     </div>
   );
 };

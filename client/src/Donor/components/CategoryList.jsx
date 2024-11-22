@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import NavBar from "./NavBar"
 
@@ -37,8 +38,10 @@ const CategoriesList = () => {
 
   return (
     <div>
-      <div className="category-div">
+      <div className="category-div" style={{padding: "60px"}}>
         <NavBar/>
+        <h1>Categories</h1>
+        <p>This are the categories available in the system</p>
         {categories.length > 0 ? (
           categories.map((category) => (
             <button
@@ -51,6 +54,8 @@ const CategoriesList = () => {
                 borderRadius: "5px",
                 background: "#113047",
                 cursor: "pointer",
+                marginLeft: "50px",
+                width: "300px"
               }}
             >
               {category.name}

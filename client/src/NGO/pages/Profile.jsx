@@ -1,83 +1,43 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import Navbar from "../components/Navbar"
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+// import { useHistory } from 'react-router-dom';
+import { logout } from '../redux/slices/authSlice';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const NGOProfile = () => {
-  const [profile, setProfile] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  // const history = useHistory();
+  const navigate = useNavigate()
+  const { user, token } = useSelector((state) => state.auth);
 
-  const token = useSelector((state) => state.auth.token); // Assume you store the JWT token in Redux
-
+  // Redirect to login if no token (i.e., user is not logged in)
   useEffect(() => {
-    const fetchProfile = async () => {'http://127.0.0.1:5000/users/ngo'
-      try {
-        const response = await axios.get("", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setProfile(response.data);
-      } catch (err) {
-        setError("Failed to fetch profile data");
-      } finally {
-        setLoading(false);
-      }
-    };
+    if (!token) {
+      navigate('/ngo-profile');
+    }
+  }, [token, history]);
 
-    fetchProfile();
-  }, [token]);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push('/login');
+  };
 
   return (
     <div>
-      <Navbar />
-      {profile && (
+      <Navbar/>
+      {user ? (
         <div>
-          <h2>Organization Details</h2>
-          <p>
-            <strong>Organization Name:</strong> {profile.organization_name}
-          </p>
-          <h2>Organization Details</h2>
-          <p>
-            <strong>Organization Name:</strong> {profile.organization_name}
-          </p>
-          <p>
-            <strong>Organization Description:</strong>{" "}
-            {profile.organization_description}
-          </p>
-
-          <p>
-            <strong>Email:</strong> {profile.email}
-          </p>
-          <p>
-            <strong>Organization Address:</strong>{" "}
-            {profile.organization_address}
-          </p>
-          <h4>Contact Person</h4>
-
-          <p>
-            <strong>First Name:</strong> {profile.first_name}
-          </p>
-          <p>
-            <strong>Last Name:</strong> {profile.last_name}
-          </p>
-
-          <p>
-            <strong>Phone:</strong> {profile.phone}
-          </p>
+          <h2>{user.organization_name}</h2>
+          <p><strong>Location:</strong> {user.location}</p>
+          <p><strong>Description:</strong> {user.description}</p>
+          <button onClick={handleLogout}>Logout</button>
         </div>
+      ) : (
+        <p>Loading...</p>
       )}
-    </div>
-  );
-};
+      </div>
+  )
+}
+export default NGOProfile
 
-export default NGOProfile;

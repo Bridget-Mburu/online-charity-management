@@ -115,10 +115,10 @@ const Requests = () => {
       <table className="table table-striped table-hover">
         <thead className="table-dark">
           <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Target Amount</th>
-            <th>Action</th>
+            <th style={{ backgroundColor: "#113047" }}>Title</th>
+            <th style={{ backgroundColor: "#113047" }}>Description</th>
+            <th style={{ backgroundColor: "#113047" }}>Target Amount</th>
+            <th style={{ backgroundColor: "#113047" }}>Action</th>
           </tr>
         </thead>
         <tbody>

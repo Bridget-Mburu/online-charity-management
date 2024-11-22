@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/dashboard.css';
-import '../styles/sidebar.css';
 import StatsCard from '../components/Dashboard/StatsCard';
 import AdminNavBar from '../components/AdminNavBar';
-import Sidebar from '../components/Sidebar';
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -62,7 +60,6 @@ const AdminDashboard = () => {
     <div className="dashboard-overview">
       <AdminNavBar />
       <div className="dashboard-container">
-        <Sidebar />
         <div className="dashboard-main-content">
           <h2>Admin Dashboard</h2>
           <div className="stats-container">

@@ -32,6 +32,7 @@ import Layout from "./Layout";
 //import DonationPage from './Donor/components/DonationPage';
 import Requests from './Donor/components/donationRequest';
 import CategoriesList from './Donor/components/CategoryList';
+import NGOProfile from './NGO/pages/Profile';
 // import DonorProfile from './Donor/components/profile';
 
 const App = () => {
@@ -62,6 +63,7 @@ const App = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path='/admin-requests' element={<DonationRequest/>}/>
+          <Route path="/ngo-profile" element={<NGOProfile/>}/>
           
           
           <Route path="/admin/organizations" element={<OrganizationList />} />
@@ -89,3 +91,4 @@ const App = () => {
 };
 
 export default App;
+

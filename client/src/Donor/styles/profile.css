@@ -1,86 +1,169 @@
-/* Profile container styling */
+	
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --background-color: #f4f6f7;
+  --text-color: #333;
+  --white: #ffffff;
+  --border-color: #e0e0e0;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile Container */
 .profile {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 6px 12px var(--card-shadow);
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #ffffff;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Heading styles */
-.profile h2 {
-  color: #ff0000;
-  margin-bottom: 20px;
-  font-size: 28px;
+.profile:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.profile-header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid var(--primary-color);
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.profile-header h2 {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0;
   text-align: center;
 }
 
-.profile h3 {
-  color: #ff0000;
-  margin-top: 30px;
-  font-size: 22px;
+.profile-header p {
+  font-size: 1rem;
+  color: var(--text-color);
   text-align: center;
+  margin-top: 0.5rem;
+  font-style: italic;
 }
 
-/* Profile details section (name and email) */
+/* Profile Details Section */
 .profile-details {
-  text-align: center;
-  margin-bottom: 30px;
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.profile-details h3 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--secondary-color);
+  padding-bottom: 0.5rem;
 }
 
 .profile-details p {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.6;
 }
 
-.profile-details strong {
-  color: #333;
-}
-
-/* Donation history section styling */
+/* Social Media and Activity Links */
 .profile ul {
   list-style-type: none;
   padding: 0;
-  width: 100%;
-  max-width: 500px;
-}
-
-.profile li {
-  padding: 12px;
-  background-color: #f4f4f4;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  font-size: 16px;
+  margin: 0;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 1rem;
+  justify-content: center;
 }
 
-.profile li strong {
-  color: #ff0000;
+.profile ul li {
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
 }
 
-.profile li:last-child {
-  margin-bottom: 0;
+.profile ul li:hover {
+  transform: scale(1.05);
+  background-color: var(--primary-color);
+  color: var(--white);
+  cursor: pointer;
 }
 
-/* Responsive styles */
+/* No Donations Message */
+.profile p:last-child {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+}
+
+/* Loading State */
+.loading {
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .profile {
-    padding: 15px;
+    width: 90%;
+    padding: 1.5rem;
   }
 
-  .profile h2 {
-    font-size: 24px;
+  .profile-header img {
+    width: 120px;
+    height: 120px;
   }
 
-  .profile ul {
-    max-width: 90%;
+  .profile-header h2 {
+    font-size: 1.75rem;
   }
 
-  .profile li {
-    font-size: 14px;
+  .profile-details h3 {
+    font-size: 1.3rem;
   }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile {
+  animation: fadeIn 0.6s ease-out;
 }
