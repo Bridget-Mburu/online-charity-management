@@ -39,9 +39,9 @@
 }
 
 .nav-link:hover {
-  background-color: #772222; /* Background color on hover */
+  background-color: maroon; /* Background color on hover */
   color: white; 
-  box-shadow: 0 0 10px 2px rgba(119, 34, 34, 0.7); /* Glowing effect on hover */
+  box-shadow: 0 0 10px 2px rgba(119, 34, 34, 0.7); 
 }
 
 .nav-link i {
@@ -73,7 +73,6 @@
 /* Prevent content from being hidden behind fixed navbar /
 body {
   padding-top: 80px; / Adjust based on navbar height */
-
 
 .logout-btn {
   text-decoration: none;

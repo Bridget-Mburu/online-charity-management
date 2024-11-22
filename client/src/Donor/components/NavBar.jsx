@@ -90,7 +90,6 @@ const NavBar = () => {
           >
             <FaSignOutAlt /> <Logout />
           </li>
-
         </ul>
       </div>
     </nav>

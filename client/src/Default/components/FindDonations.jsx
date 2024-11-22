@@ -72,10 +72,10 @@ const FindDonations = () => {
       <table className="table table-striped table-hover">
         <thead className="table-dark">
           <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Target Amount</th>
-            <th>Action</th>
+            <th style={{ background: "#082c4e" }}>Title</th>
+            <th style={{ background: "#082c4e" }}>Description</th>
+            <th style={{ background: "#082c4e" }}>Target Amount</th>
+            <th style={{ background: "#082c4e" }}>Action</th>
           </tr>
         </thead>
         <tbody>
