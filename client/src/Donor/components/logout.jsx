@@ -15,6 +15,10 @@ const Logout = () => {
     navigate("/login");
   };
 
-  return <button onClick={handleLogout}>LogOut</button>;
+  return (
+    <button onClick={handleLogout} style={{ background: "#082c4e" }}>
+      LogOut
+    </button>
+  );
 };
 export default Logout;
