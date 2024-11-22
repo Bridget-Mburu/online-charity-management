@@ -1,13 +1,18 @@
 import '../styles/Login.css';
-import React from 'react';
+import React, { useState } from 'react';
 import DefaultDashboard from './DefaultDashboard';
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from 'formik';
 import * as Yup from "yup";
 import toast from 'react-hot-toast';
+import {FaEyeSlash,FaEye,} from "react-icons/fa";
+
 
 const Login = () => {
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const formik = useFormik({
     validationSchema: Yup.object().shape({
@@ -72,9 +77,15 @@ const Login = () => {
                     color={formik.errors.email ? "failure" : undefined}
                   />
                 </div>
-                <div className="form-group" id="password-group">
+                <div
+                  className="form-group"
+                  id="password-group"
+                  style={{
+                    position: "relative",
+                  }}
+                >
                   <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     name="password"
                     id="password-input"
                     placeholder="Password"
@@ -83,6 +94,19 @@ const Login = () => {
                     helpertext={formik.errors.password}
                     color={formik.errors.password ? "failure" : undefined}
                   />
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      paddingLeft: "0px",
+                    }}
+                  >
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </span>
                 </div>
                 <div className="form-group" id="submit-group">
                   <button type="submit" className="btn" id="submit-btn">
