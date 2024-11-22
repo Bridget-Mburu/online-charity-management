@@ -46,7 +46,7 @@ const Home = () => {
             local communities.
           </li>
         </ul>
-        <div style={{ co: "center" }}>
+        <div style={{ textAlign: "center" }}>
           <h3 style={{ color: "maroon" }}>
             You can make a donation request here:
           </h3>

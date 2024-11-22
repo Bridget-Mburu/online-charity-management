@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
-import React from "react";
-import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
+import React, { useState } from "react";
+import { FaGoogle, FaFacebook, FaGithub, FaEyeSlash, FaEye } from "react-icons/fa";
 import "../styles/Register.css";
 import DefaultDashboard from "../../Default/components/DefaultDashboard";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,6 +25,9 @@ const setTheme = (theme) => {
 
 const Auth = () => {
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmedPassword, setShowConfirmPassword] = useState(false)
 
   const formik = useFormik({
     validationSchema: Yup.object().shape({
@@ -102,7 +105,6 @@ const Auth = () => {
             <div className="center-wrap">
               <h4>Register</h4>
               <form onSubmit={formik.handleSubmit}>
-                
                 <select
                   type="text"
                   name="role"
@@ -111,7 +113,9 @@ const Auth = () => {
                   helpertext={formik.errors.first_name}
                   color={formik.errors.role ? "failure" : undefined}
                 >
-                  <option value="" disabled>Select Role</option>
+                  <option value="" disabled>
+                    Select Role
+                  </option>
                   <option value="ngo">NGO</option>
                   <option value="donor">Donor</option>
                 </select>
@@ -155,31 +159,68 @@ const Auth = () => {
                   color={formik.errors.phone ? "failure" : undefined}
                 />
 
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  helpertext={formik.errors.password}
-                  color={formik.errors.password ? "failure" : undefined}
-                />
+                <div style={{
+                  position: "relative",
+                }}>
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    helpertext={formik.errors.password}
+                    color={formik.errors.password ? "failure" : undefined}
+                 
+                  />
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      paddingRight: "50px"
+                    }}
+                  >
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </span>
+                </div>
 
-                <input
-                  type="password"
-                  name="confirm_password"
-                  placeholder="confirmation Password"
-                  value={formik.values.confirm_password}
-                  onChange={formik.handleChange}
-                  helpertext={formik.errors.confirm_password}
-                  color={formik.errors.confirm_password ? "failure" : undefined}
-                />
-                <button type="submit" 
-                style={{background: "maroon",
-                  width: "500px"
-                }}
-                
-                >Register</button>
+                <div style={{
+                  position: "relative"
+                }}>
+                  <input
+                    type={showConfirmedPassword ? "text" : "password"}
+                    name="confirm_password"
+                    placeholder="confirmation Password"
+                    value={formik.values.confirm_password}
+                    onChange={formik.handleChange}
+                    helpertext={formik.errors.confirm_password}
+                    color={
+                      formik.errors.confirm_password ? "failure" : undefined
+                    }
+                  />
+                  <span
+                    onClick={() => setShowConfirmPassword(!showConfirmedPassword)}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      paddingRight:"50px"
+                    }}
+                  >
+                    {showConfirmedPassword ? <FaEye /> : <FaEyeSlash/>}
+                  </span>
+                </div>
+                <button
+                  type="submit"
+                  style={{ background: "maroon", width: "500px" }}
+                >
+                  Register
+                </button>
               </form>
               <p>
                 Already have an account? <Link to="/login">Log In</Link>
