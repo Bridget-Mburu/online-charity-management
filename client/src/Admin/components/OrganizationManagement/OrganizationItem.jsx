@@ -59,25 +59,33 @@ const OrganizationItem = ({ organization, deleteOrganization, updateOrganization
             type="text"
             placeholder="Organization Name"
             value={editedData.name}
-            onChange={(e) => setEditedData({ ...editedData, name: e.target.value })}
+            onChange={(e) =>
+              setEditedData({ ...editedData, name: e.target.value })
+            }
             required
           />
           <input
             type="text"
             placeholder="Contact Info"
             value={editedData.contactInfo}
-            onChange={(e) => setEditedData({ ...editedData, contactInfo: e.target.value })}
+            onChange={(e) =>
+              setEditedData({ ...editedData, contactInfo: e.target.value })
+            }
           />
           <input
             type="text"
             placeholder="Address"
             value={editedData.address}
-            onChange={(e) => setEditedData({ ...editedData, address: e.target.value })}
+            onChange={(e) =>
+              setEditedData({ ...editedData, address: e.target.value })
+            }
           />
           <textarea
             placeholder="Description"
             value={editedData.description}
-            onChange={(e) => setEditedData({ ...editedData, description: e.target.value })}
+            onChange={(e) =>
+              setEditedData({ ...editedData, description: e.target.value })
+            }
           />
           <button onClick={handleUpdate}>Save</button>
           <button onClick={() => setEditMode(false)}>Cancel</button>
@@ -88,14 +96,35 @@ const OrganizationItem = ({ organization, deleteOrganization, updateOrganization
           <p>{organization.contactInfo}</p>
           <p>{organization.address}</p>
           <p>{organization.description}</p>
-          <button id='orgDel-btn' onClick={handleViewDetails}>View Details</button> 
-          <button id='orgDel-btn' onClick={() => setEditMode(true)}>Edit</button>
-          <button id='orgDel-btn' onClick={handleDelete}>Delete</button>
+          <button
+            id="orgDel-btn"
+            onClick={handleViewDetails}
+            style={{ background: "#082c4e" }}
+          >
+            View Details
+          </button>
+          <button
+            id="orgDel-btn"
+            onClick={() => setEditMode(true)}
+            style={{ background: "#082c4e" }}
+          >
+            Edit
+          </button>
+          <button
+            id="orgDel-btn"
+            onClick={handleDelete}
+            style={{ background: "#082c4e" }}
+          >
+            Delete
+          </button>
         </div>
       )}
 
-      
-      <Modal isOpen={isModalOpen} onClose={closeModal} organization={organization} />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        organization={organization}
+      />
     </div>
   );
 };
