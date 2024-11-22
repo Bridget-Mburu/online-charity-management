@@ -63,7 +63,7 @@ const App = () => {
           <Route path="/logout" element={<Logout />} />
           <Route path="/admin/users" element={<Users />} />
           <Route path='/admin-requests' element={<DonationRequest/>}/>
-          <Route path="/ngo-profile" element={<NGOProfile/>}/>
+          <Route path="/ngo-profile/" element={<NGOProfile/>}/>
           
           
           <Route path="/admin/organizations" element={<OrganizationList />} />
