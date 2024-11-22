@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from "sweetalert2";
 import { FaGoogle, FaFacebook, FaGithub } from "react-icons/fa";
 import "../styles/Auth.css"; // Ensure your CSS file is imported
@@ -7,6 +7,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
+import {
+  FaEyeSlash,
+  FaEye,
+} from "react-icons/fa";
+
 
 // Sample theme array (if needed)
 const themes = [
@@ -24,6 +29,9 @@ const setTheme = (theme) => {
 
 const AuthNGO = () => {
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmedPassword, setShowConfirmPassword] = useState(false)
 
   // Formik setup with validation schema using Yup
   const formik = useFormik({
@@ -151,34 +159,67 @@ const AuthNGO = () => {
                   <div className="error">{formik.errors.email}</div>
                 )}
 
-                {/* Password */}
-                <input
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                {formik.touched.password && formik.errors.password && (
-                  <div className="error">{formik.errors.password}</div>
-                )}
+                <div
+                  style={{
+                    position: "relative",
+                  }}
+                >
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Password"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    helpertext={formik.errors.password}
+                    color={formik.errors.password ? "failure" : undefined}
+                  />
+                  <span
+                    onClick={() => setShowPassword(!showPassword)}
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      paddingRight: "50px",
+                    }}
+                  >
+                    {showPassword ? <FaEye /> : <FaEyeSlash />}
+                  </span>
+                </div>
 
-                {/* Confirm Password */}
-                <input
-                  type="password"
-                  name="confirm_password"
-                  placeholder="Confirm Password"
-                  value={formik.values.confirm_password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-                {formik.touched.confirm_password &&
-                  formik.errors.confirm_password && (
-                    <div className="error">
-                      {formik.errors.confirm_password}
-                    </div>
-                  )}
+                <div
+                  style={{
+                    position: "relative",
+                  }}
+                >
+                  <input
+                    type={showConfirmedPassword ? "text" : "password"}
+                    name="confirm_password"
+                    placeholder="confirmation Password"
+                    value={formik.values.confirm_password}
+                    onChange={formik.handleChange}
+                    helpertext={formik.errors.confirm_password}
+                    color={
+                      formik.errors.confirm_password ? "failure" : undefined
+                    }
+                  />
+                  <span
+                    onClick={() =>
+                      setShowConfirmPassword(!showConfirmedPassword)
+                    }
+                    style={{
+                      position: "absolute",
+                      right: "10px",
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      cursor: "pointer",
+                      paddingRight: "50px",
+                    }}
+                  >
+                    {showConfirmedPassword ? <FaEye /> : <FaEyeSlash />}
+                  </span>
+                </div>
 
                 {/* Organization Address */}
                 <input

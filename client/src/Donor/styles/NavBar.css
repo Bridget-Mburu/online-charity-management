@@ -1,70 +1,108 @@
-/* DonorNavBar.css */
-
-.donor-navbar {
-  background-color: #652f2f; /* Deep red background */
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  height: 60px; /* Slightly taller for better spacing */
-}
-
-/* Navigation links container */
-.donor-nav-links {
+.navbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-grow: 1;
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Changed from sticky to fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-/* Navigation list */
-.donor-nav-list {
+.nav-links {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
   gap: 20px;
-  list-style: none; /* Remove default list styles */
-  margin: 0;
-  padding: 0;
+  flex-wrap: nowrap; /* Prevent wrapping /
+  overflow-x: auto; / Allow horizontal scrolling if needed /
+  -webkit-overflow-scrolling: touch; / Smooth scrolling on iOS */
 }
 
-/* Individual link styles */
-.donor-nav-link {
-  color: #ffffff; /* White text for links */
-  text-decoration: none; /* Remove underline */
-  font-size: 16px;
-  padding: 8px 12px;
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 15px;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  text-transform: uppercase;
+  display: inline-flex; /* Changed to inline-flex /
+  align-items: center;
+  white-space: nowrap; / Prevent text wrapping */
 }
 
-/* Hover effect for links */
-.donor-nav-link:hover {
-  background-color: #ffffff;
-  color: #772222; /* Slightly darker red for hover text */
+.nav-link:hover {
+  background-color: #772222; /* Background color on hover */
+  color: white; 
+  box-shadow: 0 0 10px 2px rgba(119, 34, 34, 0.7); /* Glowing effect on hover */
 }
 
-/* Active link styling */
-.donor-active-link {
-  background-color: #ffffff; /* White background for active link */
-  color: #772222; /* Dark red for active link text */
-  font-weight: bold;
+.nav-link i {
+  margin-right: 8px;
+  font-size: 20px;
 }
 
-/* Responsive styles */
+.nav-link:hover i {
+  color: white; /* Icon color change on hover */
+}
+
+/* Media Query for Smaller Screens */
 @media (max-width: 768px) {
-  .donor-navbar {
-    flex-direction: column;
-    align-items: flex-start;
-    height: auto; /* Adjust height for mobile */
+  .navbar {
+    padding: 15px 0;
   }
 
-  .donor-nav-list {
-    flex-direction: column;
+  .nav-links {
     gap: 10px;
+    padding: 0 15px; /* Add some padding on sides */
   }
 
-  .donor-nav-link {
-    font-size: 14px;
-    padding: 6px 10px; /* Adjust padding for mobile */
+  .nav-link {
+    font-size: 16px;
+    padding: 8px 12px;
   }
+}
+
+/* Prevent content from being hidden behind fixed navbar /
+body {
+  padding-top: 80px; / Adjust based on navbar height */
+
+
+.logout-btn {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 20px; /* Slightly adjusted padding for better button size /
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #772222;
+  cursor: pointer; / Added cursor for button interaction */
+}
+
+.logout-btn i {
+  margin-right: 8px;
+  font-size: 20px;
+}
+
+.logout-btn:hover {
+  background-color: #772222;
+  color: white;
+  border-color: #772222; /* Border color change on hover /
+  box-shadow: 0 0 10px 2px rgba(119, 34, 34, 0.7); / Glowing effect on hover */
+}
+
+.logout-btn:hover i {
+  color: white; /* Icon color change on hover */
 }
