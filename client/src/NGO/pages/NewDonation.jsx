@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
@@ -76,8 +77,14 @@ const NewDonationForm = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <h2>Create Donation Request</h2>
+      <div
+        style={{
+          padding: "280px",
+        }}
+      >
+        <h2 style={{ color: "maroon", textAlign: "center" }}>
+          Create Donation Request
+        </h2>
         <form onSubmit={formik.handleSubmit}>
           <div>
             <input
@@ -86,6 +93,7 @@ const NewDonationForm = () => {
               placeholder="Title"
               onChange={formik.handleChange}
               value={formik.values.title}
+              style={{ marginLeft: "40px" }}
             />
 
             <input
@@ -94,6 +102,7 @@ const NewDonationForm = () => {
               placeholder="Description"
               onChange={formik.handleChange}
               value={formik.values.description}
+              style={{ marginLeft: "40px" }}
             />
 
             <input
@@ -102,20 +111,21 @@ const NewDonationForm = () => {
               placeholder="Target Amount"
               onChange={formik.handleChange}
               value={formik.values.target_amount}
+              style={{ marginLeft: "40px" }}
             />
 
             <select
               name="category_name"
               value={formik.values.category_name}
               onChange={formik.handleChange}
+              style={{ marginLeft: "40px" ,
+                width: "1050px"
+              }}
             >
               <option value="">Select Category</option>
               {categories.map((category) => {
                 return (
-                  <option
-                    key={category.category_id}
-                    value={category.name}
-                  >
+                  <option key={category.category_id} value={category.name}>
                     {category.name}
                   </option>
                 );
@@ -125,7 +135,16 @@ const NewDonationForm = () => {
               <div style={{ color: "red" }}>{formik.errors.category_id}</div>
             ) : null}
 
-            <button type="submit">Create Request</button>
+            <button
+              type="submit"
+              style={{
+                backgroundColor: "maroon",
+                width: "700px",
+                marginLeft: "200px",
+              }}
+            >
+              Create Request
+            </button>
           </div>
         </form>
       </div>
